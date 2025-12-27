@@ -1,8 +1,14 @@
-# Ubuntu CUDA llama.cpp Executable
+# Ubuntu CUDA llama.cpp Executable - Pre-Built Binary for Ubuntu 22.04
 
 Pre-built **llama.cpp** CUDA binary for Ubuntu 22.04 (x86_64) with NVIDIA GPU support.
 
-**No compilation required** - download, extract, and run!
+**No compilation required** - download, extract, and run! Tested on GeForce 940M (1GB VRAM) to RTX 4090.
+
+[![Download](https://img.shields.io/github/downloads/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/total)](https://github.com/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/releases)
+[![Release](https://img.shields.io/github/v/release/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable)](https://github.com/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/releases/latest)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+> **Keywords**: llama.cpp ubuntu binary, pre-built llama.cpp, llama server ubuntu, cuda binary, gguf inference, no compilation, GeForce 940M, JupyterLab integration
 
 ## 📦 What's Included
 
