@@ -1,0 +1,1 @@
+Pre-built llama.cpp CUDA binary for Ubuntu 22.04. No compilation required - download, extract, and run! Works with llcuda Python package for JupyterLab integration. Tested on GeForce 940M to RTX 4090.

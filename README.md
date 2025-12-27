@@ -17,66 +17,141 @@ Pre-built **llama.cpp** CUDA binary for Ubuntu 22.04 (x86_64) with NVIDIA GPU su
 
 ## ⚡ Quick Start
 
-### Download and Extract
+### Step 1: Download and Extract
 
 ```bash
-# Download the binary
+# Download the binary (290 MB)
 wget https://github.com/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/releases/download/v0.1.0/llama.cpp-733c851f-bin-ubuntu-cuda-x64.tar.xz
 
 # Extract
 tar -xf llama.cpp-733c851f-bin-ubuntu-cuda-x64.tar.xz
-cd llama.cpp-733c851f-bin-ubuntu-cuda
 
-# Verify it works
+# Enter the directory
+cd llama-cpp-cuda
+
+# Verify CUDA support
 ./bin/llama-server --version
 ```
 
-### Basic Usage
-
-```bash
-# Start llama-server with a GGUF model
-./bin/llama-server \
-  -m /path/to/your/model.gguf \
-  --port 8090 \
-  -ngl 99 \
-  -c 2048
+**Expected output:**
+```
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA GeForce 940M, compute capability 5.0, VMM: yes
+version: 6093 (733c851f)
 ```
 
-Then access at: `http://localhost:8090`
+### Step 2: Download a GGUF Model
 
-## 🐍 Use with Python (llcuda)
-
-For a Python API wrapper with automatic server management, use **[llcuda](https://github.com/waqasm86/llcuda)**:
+Download a small model for testing:
 
 ```bash
-# Set environment variable
-export LLAMA_SERVER_PATH=$PWD/bin/llama-server
+# Download Gemma 3 1B (Q4_K_M quantization, ~700 MB)
+cd bin
+wget https://huggingface.co/google/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it-Q4_K_M.gguf
+cd ..
+```
 
-# Install llcuda
+Or use any GGUF model from HuggingFace and place it in the `bin/` folder.
+
+### Step 3A: Command-Line Usage (Manual Server)
+
+```bash
+# Start llama-server with the model
+./bin/llama-server \
+  -m ./bin/gemma-3-1b-it-Q4_K_M.gguf \
+  --port 8090 \
+  -ngl 8 \
+  -c 512
+```
+
+Then access the web UI at: `http://localhost:8090`
+
+### Step 3B: Python/JupyterLab Usage (Recommended)
+
+For automatic server management and Python API, use **[llcuda](https://github.com/waqasm86/llcuda)**:
+
+**Installation:**
+```bash
+# Install llcuda from PyPI
 pip install llcuda
 ```
 
-Then use in Python:
+**Usage in JupyterLab or Python:**
+
 ```python
+import os
+
+# Set the path to llama-server
+pwd = '/home/waqasm86/Downloads/llama-cpp-cuda'  # Your extraction path
+os.environ['LLAMA_SERVER_PATH'] = pwd + '/bin/llama-server'
+
+# Import llcuda
 import llcuda
 
+# Verify
+print(f"LLAMA_SERVER_PATH: {os.environ.get('LLAMA_SERVER_PATH')}")
+print(f"llcuda version: {llcuda.__version__}")
+
+# Create inference engine
 engine = llcuda.InferenceEngine()
+
+# Load model with optimized settings for GeForce 940M (1GB VRAM)
 engine.load_model(
-    "/path/to/model.gguf",
-    auto_start=True,  # Automatically starts llama-server
-    gpu_layers=99
+    pwd + "/bin/gemma-3-1b-it-Q4_K_M.gguf",
+    auto_start=True,     # Automatically starts llama-server
+    gpu_layers=8,        # 8 layers on GPU
+    ctx_size=512,        # Small context to save memory
+    n_parallel=1,        # Single sequence
+    verbose=True,
+    batch_size=512,      # Reduces from default 2048
+    ubatch_size=128,     # CRITICAL - reduces compute buffer
 )
 
+print("\n✓ Model loaded successfully!")
+
+# Run inference
 result = engine.infer("What is AI?", max_tokens=100)
-print(result.text)
+
+# Display result
+if result.success:
+    print("\n" + "="*60)
+    print("Generated Text:")
+    print("="*60)
+    print(result.text)
+    print("="*60)
+    print(f"\nPerformance:")
+    print(f"  Tokens: {result.tokens_generated}")
+    print(f"  Speed: {result.tokens_per_sec:.1f} tok/s")
+    print(f"  Latency: {result.latency_ms:.0f}ms")
+else:
+    print(f"Error: {result.error_message}")
+```
+
+**Expected output:**
+```
+✓ Model loaded and ready for inference
+✓ Model loaded successfully!
+
+============================================================
+Generated Text:
+============================================================
+AI, or Artificial Intelligence, is essentially the ability of a
+computer or machine to perform tasks that typically require human
+intelligence...
+============================================================
+
+Performance:
+  Tokens: 100
+  Speed: 12.2 tok/s
+  Latency: 8217ms
 ```
 
 **llcuda features**:
-- Automatic server management (no manual startup!)
-- Auto-discovery of models and executables
-- JupyterLab integration
-- Performance metrics
-- Context manager support
+- ✅ Automatic server management (no manual startup!)
+- ✅ Auto-discovery of models and executables
+- ✅ JupyterLab integration
+- ✅ Performance metrics
+- ✅ Context manager support
 
 **Learn more**: [llcuda on PyPI](https://pypi.org/project/llcuda/) | [llcuda on GitHub](https://github.com/waqasm86/llcuda)
 
