@@ -44,17 +44,18 @@ set(GGML_AVX512_VNNI "OFF")
 set(GGML_AVX_VNNI "OFF")
 set(GGML_BACKEND_DIR "")
 set(GGML_BACKEND_DL "OFF")
+set(GGML_BIN_INSTALL_DIR "bin")
 set(GGML_BLAS "OFF")
 set(GGML_BLAS_DEFAULT "OFF")
 set(GGML_BLAS_VENDOR "Generic")
 set(GGML_BLAS_VENDOR_DEFAULT "Generic")
 set(GGML_BMI2 "OFF")
-set(GGML_BUILD_COMMIT "733c851f")
+set(GGML_BUILD_COMMIT "10b4f82d4")
 set(GGML_BUILD_EXAMPLES "OFF")
-set(GGML_BUILD_NUMBER "6093")
+set(GGML_BUILD_NUMBER "7489")
 set(GGML_BUILD_TESTS "OFF")
 set(GGML_CCACHE "ON")
-set(GGML_CCACHE_FOUND "GGML_CCACHE_FOUND-NOTFOUND")
+set(GGML_CCACHE_FOUND "/usr/bin/ccache")
 set(GGML_CPU "ON")
 set(GGML_CPU_ALL_VARIANTS "OFF")
 set(GGML_CPU_ARM_ARCH "")
@@ -64,29 +65,33 @@ set(GGML_CPU_POWERPC_CPUTYPE "")
 set(GGML_CPU_REPACK "ON")
 set(GGML_CUDA "ON")
 set(GGML_CUDA_COMPRESSION_MODE "size")
-set(GGML_CUDA_F16 "OFF")
 set(GGML_CUDA_FA "ON")
 set(GGML_CUDA_FA_ALL_QUANTS "OFF")
 set(GGML_CUDA_FORCE_CUBLAS "ON")
 set(GGML_CUDA_FORCE_MMQ "OFF")
 set(GGML_CUDA_GRAPHS "ON")
-set(GGML_CUDA_GRAPHS_DEFAULT "ON")
+set(GGML_CUDA_GRAPHS_DEFAULT "OFF")
 set(GGML_CUDA_NO_PEER_COPY "OFF")
 set(GGML_CUDA_NO_VMM "OFF")
 set(GGML_CUDA_PEER_MAX_BATCH_SIZE "128")
 set(GGML_F16C "OFF")
 set(GGML_FATAL_WARNINGS "OFF")
 set(GGML_FMA "OFF")
+set(GGML_GIT_DIRTY "0")
 set(GGML_GPROF "OFF")
+set(GGML_HEXAGON "OFF")
+set(GGML_HEXAGON_FP32_QUANTIZE_GROUP_SIZE "128")
 set(GGML_HIP "OFF")
-set(GGML_HIP_FORCE_ROCWMMA_FATTN_GFX12 "OFF")
+set(GGML_HIP_EXPORT_METRICS "OFF")
 set(GGML_HIP_GRAPHS "OFF")
 set(GGML_HIP_MMQ_MFMA "ON")
 set(GGML_HIP_NO_VMM "ON")
 set(GGML_HIP_ROCWMMA_FATTN "OFF")
+set(GGML_INCLUDE_INSTALL_DIR "include")
 set(GGML_LASX "ON")
+set(GGML_LIB_INSTALL_DIR "lib")
 set(GGML_LLAMAFILE "ON")
-set(GGML_LLAMAFILE_DEFAULT "ON")
+set(GGML_LLAMAFILE_DEFAULT "OFF")
 set(GGML_LSX "ON")
 set(GGML_LTO "OFF")
 set(GGML_METAL "OFF")
@@ -96,13 +101,11 @@ set(GGML_METAL_MACOSX_VERSION_MIN "")
 set(GGML_METAL_NDEBUG "OFF")
 set(GGML_METAL_SHADER_DEBUG "OFF")
 set(GGML_METAL_STD "")
-set(GGML_METAL_USE_BF16 "OFF")
 set(GGML_MUSA "OFF")
 set(GGML_MUSA_GRAPHS "OFF")
 set(GGML_MUSA_MUDNN_COPY "OFF")
 set(GGML_NATIVE "ON")
 set(GGML_NATIVE_DEFAULT "ON")
-set(GGML_NNPA "OFF")
 set(GGML_OPENCL "OFF")
 set(GGML_OPENCL_EMBED_KERNELS "ON")
 set(GGML_OPENCL_PROFILING "OFF")
@@ -110,16 +113,20 @@ set(GGML_OPENCL_TARGET_VERSION "300")
 set(GGML_OPENCL_USE_ADRENO_KERNELS "ON")
 set(GGML_OPENMP "ON")
 set(GGML_OPENMP_ENABLED "ON")
-set(GGML_PUBLIC_HEADERS "include/ggml.h;include/ggml-cpu.h;include/ggml-alloc.h;include/ggml-backend.h;include/ggml-blas.h;include/ggml-cann.h;include/ggml-cpp.h;include/ggml-cuda.h;include/ggml-opt.h;include/ggml-metal.h;include/ggml-rpc.h;include/ggml-sycl.h;include/ggml-vulkan.h;include/ggml-webgpu.h;include/gguf.h")
+set(GGML_PUBLIC_HEADERS "include/ggml.h;include/ggml-cpu.h;include/ggml-alloc.h;include/ggml-backend.h;include/ggml-blas.h;include/ggml-cann.h;include/ggml-cpp.h;include/ggml-cuda.h;include/ggml-opt.h;include/ggml-metal.h;include/ggml-rpc.h;include/ggml-sycl.h;include/ggml-vulkan.h;include/ggml-webgpu.h;include/ggml-zendnn.h;include/gguf.h")
 set(GGML_RPC "OFF")
 set(GGML_RVV "ON")
-set(GGML_RV_ZFH "OFF")
+set(GGML_RV_ZFH "ON")
+set(GGML_RV_ZICBOP "ON")
+set(GGML_RV_ZIHINTPAUSE "ON")
+set(GGML_RV_ZVFH "ON")
 set(GGML_SANITIZE_ADDRESS "OFF")
 set(GGML_SANITIZE_THREAD "OFF")
 set(GGML_SANITIZE_UNDEFINED "OFF")
 set(GGML_SCCACHE_FOUND "GGML_SCCACHE_FOUND-NOTFOUND")
 set(GGML_SCHED_MAX_COPIES "4")
-set(GGML_SHARED_LIB "OFF")
+set(GGML_SCHED_NO_REALLOC "OFF")
+set(GGML_SHARED_LIB "ON")
 set(GGML_SSE42 "OFF")
 set(GGML_STANDALONE "OFF")
 set(GGML_STATIC "OFF")
@@ -129,6 +136,11 @@ set(GGML_SYCL_DNN "ON")
 set(GGML_SYCL_F16 "OFF")
 set(GGML_SYCL_GRAPH "ON")
 set(GGML_SYCL_TARGET "INTEL")
+set(GGML_VERSION "0.9.4")
+set(GGML_VERSION_BASE "0.9.4")
+set(GGML_VERSION_MAJOR "0")
+set(GGML_VERSION_MINOR "9")
+set(GGML_VERSION_PATCH "4")
 set(GGML_VULKAN "OFF")
 set(GGML_VULKAN_CHECK_RESULTS "OFF")
 set(GGML_VULKAN_DEBUG "OFF")
@@ -139,8 +151,13 @@ set(GGML_VULKAN_SHADER_DEBUG_INFO "OFF")
 set(GGML_VULKAN_VALIDATE "OFF")
 set(GGML_VXE "ON")
 set(GGML_WEBGPU "OFF")
+set(GGML_WEBGPU_CPU_PROFILE "OFF")
 set(GGML_WEBGPU_DEBUG "OFF")
+set(GGML_WEBGPU_GPU_PROFILE "OFF")
+set(GGML_WEBGPU_JSPI "ON")
 set(GGML_XTHEADVECTOR "OFF")
+set(GGML_ZDNN "OFF")
+set(GGML_ZENDNN "OFF")
 
 
 # Find all dependencies before creating any target.
@@ -247,7 +264,7 @@ if(NOT TARGET ggml::ggml)
 
     find_library(GGML_LIBRARY ggml
         REQUIRED
-        HINTS ${GGML_LIB_DIR} ${GGML_BACKEND_DIR}
+        HINTS ${GGML_LIB_DIR}
         NO_CMAKE_FIND_ROOT_PATH)
 
     add_library(ggml::ggml UNKNOWN IMPORTED)
@@ -266,54 +283,56 @@ if(NOT TARGET ggml::ggml)
             IMPORTED_LOCATION "${GGML_BASE_LIBRARY}")
 
     set(_ggml_all_targets "")
-    foreach(_ggml_backend ${GGML_AVAILABLE_BACKENDS})
-        string(REPLACE "-" "_" _ggml_backend_pfx "${_ggml_backend}")
-        string(TOUPPER "${_ggml_backend_pfx}" _ggml_backend_pfx)
+    if (NOT GGML_BACKEND_DL)
+        foreach(_ggml_backend ${GGML_AVAILABLE_BACKENDS})
+            string(REPLACE "-" "_" _ggml_backend_pfx "${_ggml_backend}")
+            string(TOUPPER "${_ggml_backend_pfx}" _ggml_backend_pfx)
 
-        find_library(${_ggml_backend_pfx}_LIBRARY ${_ggml_backend}
-            REQUIRED
-            HINTS ${GGML_LIB_DIR}
-            NO_CMAKE_FIND_ROOT_PATH)
+            find_library(${_ggml_backend_pfx}_LIBRARY ${_ggml_backend}
+                REQUIRED
+                HINTS ${GGML_LIB_DIR}
+                NO_CMAKE_FIND_ROOT_PATH)
 
-        message(STATUS "Found ${${_ggml_backend_pfx}_LIBRARY}")
+            message(STATUS "Found ${${_ggml_backend_pfx}_LIBRARY}")
 
-        add_library(ggml::${_ggml_backend} UNKNOWN IMPORTED)
-        set_target_properties(ggml::${_ggml_backend}
-            PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${GGML_INCLUDE_DIR}"
-                IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
-                IMPORTED_LOCATION "${${_ggml_backend_pfx}_LIBRARY}"
-                INTERFACE_COMPILE_FEATURES c_std_90
-                POSITION_INDEPENDENT_CODE ON)
-
-        string(REGEX MATCH "^ggml-cpu" is_cpu_variant "${_ggml_backend}")
-        if(is_cpu_variant)
-            list(APPEND GGML_CPU_INTERFACE_LINK_LIBRARIES "ggml::ggml-base")
-            set_target_properties(ggml::${_ggml_backend}
-            PROPERTIES
-                INTERFACE_LINK_LIBRARIES "${GGML_CPU_INTERFACE_LINK_LIBRARIES}")
-
-            if(GGML_CPU_INTERFACE_LINK_OPTIONS)
-                set_target_properties(ggml::${_ggml_backend}
-                    PROPERTIES
-                        INTERFACE_LINK_OPTIONS "${GGML_CPU_INTERFACE_LINK_OPTIONS}")
-            endif()
-
-        else()
-            list(APPEND ${_ggml_backend_pfx}_INTERFACE_LINK_LIBRARIES "ggml::ggml-base")
+            add_library(ggml::${_ggml_backend} UNKNOWN IMPORTED)
             set_target_properties(ggml::${_ggml_backend}
                 PROPERTIES
-                    INTERFACE_LINK_LIBRARIES "${${_ggml_backend_pfx}_INTERFACE_LINK_LIBRARIES}")
+                    INTERFACE_INCLUDE_DIRECTORIES "${GGML_INCLUDE_DIR}"
+                    IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+                    IMPORTED_LOCATION "${${_ggml_backend_pfx}_LIBRARY}"
+                    INTERFACE_COMPILE_FEATURES c_std_90
+                    POSITION_INDEPENDENT_CODE ON)
 
-            if(${_ggml_backend_pfx}_INTERFACE_LINK_OPTIONS)
+            string(REGEX MATCH "^ggml-cpu" is_cpu_variant "${_ggml_backend}")
+            if(is_cpu_variant)
+                list(APPEND GGML_CPU_INTERFACE_LINK_LIBRARIES "ggml::ggml-base")
+                set_target_properties(ggml::${_ggml_backend}
+                PROPERTIES
+                    INTERFACE_LINK_LIBRARIES "${GGML_CPU_INTERFACE_LINK_LIBRARIES}")
+
+                if(GGML_CPU_INTERFACE_LINK_OPTIONS)
+                    set_target_properties(ggml::${_ggml_backend}
+                        PROPERTIES
+                            INTERFACE_LINK_OPTIONS "${GGML_CPU_INTERFACE_LINK_OPTIONS}")
+                endif()
+
+            else()
+                list(APPEND ${_ggml_backend_pfx}_INTERFACE_LINK_LIBRARIES "ggml::ggml-base")
                 set_target_properties(ggml::${_ggml_backend}
                     PROPERTIES
-                        INTERFACE_LINK_OPTIONS "${${_ggml_backend_pfx}_INTERFACE_LINK_OPTIONS}")
-            endif()
-        endif()
+                        INTERFACE_LINK_LIBRARIES "${${_ggml_backend_pfx}_INTERFACE_LINK_LIBRARIES}")
 
-        list(APPEND _ggml_all_targets ggml::${_ggml_backend})
-    endforeach()
+                if(${_ggml_backend_pfx}_INTERFACE_LINK_OPTIONS)
+                    set_target_properties(ggml::${_ggml_backend}
+                        PROPERTIES
+                            INTERFACE_LINK_OPTIONS "${${_ggml_backend_pfx}_INTERFACE_LINK_OPTIONS}")
+                endif()
+            endif()
+
+            list(APPEND _ggml_all_targets ggml::${_ggml_backend})
+        endforeach()
+    endif()
 
     list(APPEND GGML_INTERFACE_LINK_LIBRARIES ggml::ggml-base "${_ggml_all_targets}")
     set_target_properties(ggml::ggml

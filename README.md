@@ -17,20 +17,20 @@ Pre-built **llama.cpp** CUDA binary for Ubuntu 22.04 (x86_64) with NVIDIA GPU su
 - **llama-bench** - Benchmarking tool
 - All supporting libraries and CUDA binaries
 
-**Build**: llama.cpp commit `733c851f` (build 6093)
-**CUDA**: Built with CUDA 12.x support
-**Size**: 290 MB compressed
+**Build**: llama.cpp commit `10b4f82d4` (build 7489)
+**CUDA**: Built with CUDA 12.8 support
+**Updated**: December 28, 2025
 
 ## ⚡ Quick Start
 
 ### Step 1: Download and Extract
 
 ```bash
-# Download the binary (290 MB)
-wget https://github.com/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/releases/download/v0.1.0/llama.cpp-733c851f-bin-ubuntu-cuda-x64.tar.xz
+# Download the binary (check latest release)
+wget https://github.com/waqasm86/Ubuntu-Cuda-Llama.cpp-Executable/releases/latest/download/llama.cpp-ubuntu-cuda-x64.tar.xz
 
 # Extract
-tar -xf llama.cpp-733c851f-bin-ubuntu-cuda-x64.tar.xz
+tar -xf llama.cpp-ubuntu-cuda-x64.tar.xz
 
 # Enter the directory
 cd llama-cpp-cuda
@@ -43,7 +43,7 @@ cd llama-cpp-cuda
 ```
 ggml_cuda_init: found 1 CUDA devices:
   Device 0: NVIDIA GeForce 940M, compute capability 5.0, VMM: yes
-version: 6093 (733c851f)
+version: 7489 (10b4f82d4)
 ```
 
 ### Step 2: Download a GGUF Model
